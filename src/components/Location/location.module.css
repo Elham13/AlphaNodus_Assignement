@@ -1,8 +1,8 @@
 .locationWrapper {
   width: 50%;
-  min-height: 100%;
-  overflow-y: auto;
+  height: 100vh;
   padding: 1rem;
+  overflow: hidden;
 }
 
 .header {
@@ -64,4 +64,69 @@
   padding: 0.3rem 1rem;
   border-radius: 0.2rem;
   box-shadow: inset 0 0 20px -15px gray;
+  color: #989898;
+}
+
+.filterBtn:hover {
+  color: black;
+}
+
+.locationContent {
+  padding: 1rem;
+  overflow-y: auto;
+  height: calc(100vh - 25%);
+}
+
+.cardWrapper {
+  box-shadow: 0 0 2px lightgray;
+  margin-top: 0.5rem;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cardWrapper .left .title {
+  font-weight: bold;
+  text-transform: capitalize;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+
+.cardWrapper .left .title:hover {
+  color: gray;
+}
+
+.cardWrapper .left .subTitle {
+  color: gray;
+  font-size: 0.9rem;
+}
+
+.widgetsWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+}
+
+.widgetsWrapper span {
+  margin-right: 0.5rem;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  color: #989898;
+}
+
+.widgetsWrapper span:hover {
+  color: black;
+  transform: scale(1.1);
+}
+
+.widgetsWrapper .locationBtn:hover {
+  color: green;
+}
+.widgetsWrapper .phoneBtn:hover {
+  color: orange;
+}
+
+.red {
+  background-color: red;
 }

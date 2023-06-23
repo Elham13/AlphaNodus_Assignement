@@ -3,10 +3,14 @@ import styles from "./location.module.css";
 import { HiRefresh } from "react-icons/hi";
 import { AiOutlinePlus } from "react-icons/ai";
 
-const Header = () => {
+type PropType = {
+  onRefresh: () => void;
+};
+
+const Header = ({ onRefresh }: PropType) => {
   return (
     <div className={styles.header}>
-      <button title="Refresh" className={styles.refresBtn}>
+      <button title="Refresh" className={styles.refresBtn} onClick={onRefresh}>
         <HiRefresh />
       </button>
       <h3>Locations</h3>
