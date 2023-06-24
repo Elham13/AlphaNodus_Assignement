@@ -1,5 +1,5 @@
 const NoData = () => {
-  return <div>NoData</div>;
+  return <div style={{ textAlign: "center" }}>No Result</div>;
 };
 
 export default NoData;

@@ -3,6 +3,7 @@ import styles from "./location.module.css";
 import { GoLocation } from "react-icons/go";
 import { LuPhoneCall } from "react-icons/lu";
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from "react-icons/ai";
+import moment from "moment";
 
 type PropType = {
   data: Resources;
@@ -10,10 +11,7 @@ type PropType = {
 
 const Card = ({ data }: PropType) => {
   const navigateToLocation = () => {
-    window.open(
-      "https://www.google.com/maps/place/Bengaluru,+Karnataka/@12.9544595,77.3012554,10z/data=!3m1!4b1!4m6!3m5!1s0x3bae1670c9b44e6d:0xf8dfc3e8517e4fe0!8m2!3d12.9715987!4d77.5945627!16zL20vMDljMTc?entry=ttu",
-      "_blank"
-    );
+    window.open(`https://www.google.com/maps?q=${data.address}`, "_blank");
   };
 
   const copyPhoneNo = () => {
@@ -41,7 +39,7 @@ const Card = ({ data }: PropType) => {
           >
             <LuPhoneCall />
           </span>
-          <span className={styles.phoneBtn}>
+          <span className={styles.phoneBtn} title={data.status}>
             {data.status === "active" ? (
               <AiOutlineCheckCircle style={{ color: "green" }} />
             ) : (
@@ -51,7 +49,20 @@ const Card = ({ data }: PropType) => {
         </div>
       </div>
       <div className={`${styles.right}`}>
-        <span className={``}>{data.status}</span>
+        {!!data.status ? (
+          <span
+            className={`${
+              data.status === "active" ? styles.active : styles.inactive
+            }`}
+          >
+            {data.status}
+          </span>
+        ) : (
+          <p />
+        )}
+        <p className={styles.updatedAt}>
+          Last Updated: {moment(data.updatedAt).fromNow()}
+        </p>
       </div>
     </div>
   );

@@ -65,14 +65,20 @@
   border-radius: 0.2rem;
   box-shadow: inset 0 0 20px -15px gray;
   color: #989898;
+  text-transform: capitalize;
 }
 
 .filterBtn:hover {
   color: black;
 }
 
+.filterBtnActive {
+  background-color: #3bcb3b;
+  color: white;
+}
+
 .locationContent {
-  padding: 1rem;
+  padding: 1rem 4rem;
   overflow-y: auto;
   height: calc(100vh - 25%);
 }
@@ -106,6 +112,7 @@
   align-items: center;
   justify-content: space-between;
   margin-top: 0.5rem;
+  width: fit-content;
 }
 
 .widgetsWrapper span {
@@ -127,6 +134,30 @@
   color: orange;
 }
 
-.red {
-  background-color: red;
+.cardWrapper .right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+}
+
+.cardWrapper .right .active,
+.cardWrapper .right .inactive {
+  background-color: #3bcb3b;
+  color: white;
+  font-size: 0.8rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 1rem;
+  width: fit-content;
+  text-transform: uppercase;
+}
+
+.cardWrapper .right .inactive {
+  background-color: gray;
+}
+
+.cardWrapper .right .updatedAt {
+  font-size: 0.7rem;
+  color: #565656;
 }

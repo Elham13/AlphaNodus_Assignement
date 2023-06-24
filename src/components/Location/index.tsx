@@ -15,6 +15,7 @@ import { useDebounce } from "../../hooks";
 const Location = () => {
   const [limit, setLimit] = useState<number>(5);
   const [searchTerm, setSearchTerm] = useState<string>("");
+  const [filters, setFilters] = useState<string>("");
   const debouncedSearch = useDebounce(searchTerm, 500);
 
   const { loading, data, error, refetch } = useQuery(GET_LOCATION_LIST, {
@@ -22,30 +23,58 @@ const Location = () => {
       tenant: process.env.REACT_APP_TENANT_ID,
       limit,
       search: "",
+      status: filters,
     },
     notifyOnNetworkStatusChange: true,
   });
 
   const handleScroll = (e: any) => {
     const elem = e.target;
-    if (elem.offsetHeight + elem.scrollTop >= elem.scrollHeight && !loading) {
+    if (
+      elem.offsetHeight + elem.scrollTop + 2 >= elem.scrollHeight &&
+      !loading
+    ) {
       setLimit((prev) => prev + 5);
     }
   };
 
   useEffect(() => {
-    refetch({ search: debouncedSearch });
-  }, [debouncedSearch]);
+    if (!!debouncedSearch) refetch({ search: debouncedSearch });
+  }, [debouncedSearch, refetch]);
 
   return (
     <div className={styles.locationWrapper}>
       <Header onRefresh={() => refetch()} />
       <LocationSearch onChange={(e) => setSearchTerm(e.target.value)} />
       <div className={styles.filterWrapper}>
-        <FilterButton text="Filter 1" />
-        <FilterButton text="Filter 2" />
-        <FilterButton text="Filter 3" />
-        <FilterButton text="Filter 4" />
+        <FilterButton
+          text="active"
+          active={filters === "active"}
+          onClick={() =>
+            setFilters((prev) => (prev === "active" ? "" : "active"))
+          }
+        />
+        <FilterButton
+          text="inactive"
+          active={filters === "inactive"}
+          onClick={() =>
+            setFilters((prev) => (prev === "inactive" ? "" : "inactive"))
+          }
+        />
+        <FilterButton
+          text="Filter 3"
+          active={filters === "filter1"}
+          onClick={() =>
+            setFilters((prev) => (prev === "filter1" ? "" : "filter1"))
+          }
+        />
+        <FilterButton
+          text="Filter 4"
+          active={filters === "filter2"}
+          onClick={() =>
+            setFilters((prev) => (prev === "filter2" ? "" : "filter2"))
+          }
+        />
       </div>
       <div className={styles.locationContent} onScroll={handleScroll}>
         {loading ? (

@@ -22,6 +22,7 @@ export const GET_LOCATION_LIST = gql`
         address
         type
         status
+        updatedAt
       }
     }
   }

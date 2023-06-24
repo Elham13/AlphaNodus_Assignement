@@ -5,7 +5,7 @@ export interface Resources {
   description?: string;
   name?: string;
   status?: string;
-  updatedAt?: string;
+  updatedAt?: number;
   type?: string;
   taxId?: string;
 }
