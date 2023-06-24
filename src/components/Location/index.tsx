@@ -12,7 +12,11 @@ import { Resources } from "../../types/apiTypes";
 import Loader from "../Loader";
 import { useDebounce } from "../../hooks";
 
-const Location = () => {
+type PropType = {
+  onLocationClick: (id: string) => void;
+};
+
+const Location = ({ onLocationClick }: PropType) => {
   const [limit, setLimit] = useState<number>(5);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [filters, setFilters] = useState<string>("");
@@ -83,7 +87,11 @@ const Location = () => {
           <Error message={error.message} />
         ) : data?.locationList?.resources?.length > 0 ? (
           data?.locationList?.resources?.map((location: Resources) => (
-            <Card key={location.id} data={location} />
+            <Card
+              key={location.id}
+              data={location}
+              onLocationClick={onLocationClick}
+            />
           ))
         ) : (
           <NoData />

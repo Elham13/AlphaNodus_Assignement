@@ -1,7 +1,6 @@
-import React, { useDebugValue, useState } from "react";
+import React from "react";
 import styles from "./location.module.css";
 import { BiSearchAlt2 } from "react-icons/bi";
-import { useDebounce } from "../../hooks";
 
 type PropType = {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;

@@ -7,11 +7,12 @@ import moment from "moment";
 
 type PropType = {
   data: Resources;
+  onLocationClick: (id: string) => void;
 };
 
-const Card = ({ data }: PropType) => {
+const Card = ({ data, onLocationClick }: PropType) => {
   const navigateToLocation = () => {
-    window.open(`https://www.google.com/maps?q=${data.address}`, "_blank");
+    window.open(`https://www.google.com/maps?q=${data.name}`, "_blank");
   };
 
   const copyPhoneNo = () => {
@@ -22,7 +23,9 @@ const Card = ({ data }: PropType) => {
   return (
     <div className={styles.cardWrapper}>
       <div className={styles.left}>
-        <p className={styles.title}>{data.name}</p>
+        <p className={styles.title} onClick={() => onLocationClick(data.id)}>
+          {data.name}
+        </p>
         <p className={styles.subTitle}>{data.address}</p>
         <div className={styles.widgetsWrapper}>
           <span

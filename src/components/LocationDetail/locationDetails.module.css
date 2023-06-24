@@ -1,0 +1,28 @@
+.detailsWrapper,
+.emptyDetail {
+  width: 50%;
+  height: 100vh;
+  padding: 1rem;
+  overflow: auto;
+}
+
+.emptyDetail {
+  color: gray;
+}
+
+.emptyDetail h3 {
+  text-align: center;
+  color: black;
+}
+
+.emptyDetail div {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.emptyDetail div span {
+  font-size: 5rem;
+}
